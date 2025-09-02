@@ -4,6 +4,8 @@ import "../css/Igra.css";
 type Card = {
   id: number;
   image: string;
+  uniqueId: number; // jedinstveni ID za svaku instancu
+  matched?: boolean;
 };
 
 export default function Igra() {
@@ -30,41 +32,55 @@ export default function Igra() {
   ];
 
   useEffect(() => {
-    const shuffled = [...cardImages, ...cardImages].sort(() => 0.5 - Math.random());
-    setCards(shuffled);
+    let uniqueId = 0;
+    const duplicated: Card[] = [...cardImages, ...cardImages].map(c => ({
+      ...c,
+      uniqueId: uniqueId++,
+      matched: false
+    }));
+    setCards(shuffleArray(duplicated));
     setTotalPairs(cardImages.length);
   }, []);
 
+  const shuffleArray = (array: Card[]) => array.sort(() => 0.5 - Math.random());
+
   const handleChoice = (card: Card) => {
     if (lockBoard) return;
-    if (firstCard && firstCard.id === card.id && firstCard.image === card.image) return;
+    if (card.matched) return; // ne može da se klikne ako je već poklopljena
+    if (firstCard && firstCard.uniqueId === card.uniqueId) return;
 
     if (!firstCard) {
       setFirstCard(card);
     } else if (!secondCard) {
       setSecondCard(card);
-      setTries((t) => t + 1);
+      setTries(t => t + 1);
       setLockBoard(true);
     }
   };
 
   useEffect(() => {
     if (firstCard && secondCard) {
-      if (firstCard.image === secondCard.image && firstCard.id !== secondCard.id) {
-        setMatchedPairs((p) => p + 1);
+      if (firstCard.id === secondCard.id) {
+        setCards(prev =>
+          prev.map(c =>
+            c.id === firstCard.id && (c.uniqueId === firstCard.uniqueId || c.uniqueId === secondCard.uniqueId)
+              ? { ...c, matched: true }
+              : c
+          )
+        );
 
-        if (playerTurn === 1) setPlayer1Score((s) => s + 1);
-        else setPlayer2Score((s) => s + 1);
-
+        if (playerTurn === 1) setPlayer1Score(s => s + 1);
+        else setPlayer2Score(s => s + 1);
+        setMatchedPairs(p => p + 1);
         resetBoard();
       } else {
         setTimeout(() => {
-          setPlayerTurn((prev) => (prev === 1 ? 2 : 1));
+          setPlayerTurn(prev => (prev === 1 ? 2 : 1));
           resetBoard();
         }, 1000);
       }
     }
-  }, [firstCard, secondCard]);
+  }, [secondCard]);
 
   const resetBoard = () => {
     setFirstCard(null);
@@ -87,44 +103,40 @@ export default function Igra() {
     <div className="Igra">
       <h1>Igrica Memorije</h1>
 
-      {/* Scoreboard */}
       <div className="score-board">
         <h2>Na potezu: Igrač {playerTurn}</h2>
         <p>Igrač 1: {player1Score}</p>
         <p>Igrač 2: {player2Score}</p>
       </div>
 
-      {/* Tabla za igru */}
       <div className="game-board">
-        {cards.map((card, index) => {
+        {cards.map((card) => {
           const isFlipped =
-            (firstCard && firstCard.id === card.id && firstCard.image === card.image) ||
-            (secondCard && secondCard.id === card.id && secondCard.image === card.image) ||
-            (firstCard && secondCard && firstCard.image === secondCard.image && firstCard.image === card.image);
+            card.matched ||
+            card.uniqueId === firstCard?.uniqueId ||
+            card.uniqueId === secondCard?.uniqueId;
 
           return (
             <div
-              key={index}
+              key={card.uniqueId}
               className={`memory-card ${isFlipped ? "flip" : ""}`}
               onClick={() => handleChoice(card)}
             >
               <img className="front-face" src={card.image} alt="card" />
-                <div
-                  className="back-face"
-                  style={{
-                    background: `url(${process.env.PUBLIC_URL + "/img/memory.png"}) center center / cover no-repeat`
-                  }}
-                ></div>
+              <div
+                className="back-face"
+                style={{
+                  background: `url(${process.env.PUBLIC_URL + "/img/memory.png"}) center center / cover no-repeat`
+                }}
+              ></div>
             </div>
           );
         })}
       </div>
 
-      {/* Dugme */}
       <button className="end-game" onClick={endGame}>
-  Završi partiju
-</button>
-
+        Završi partiju
+      </button>
     </div>
   );
 }
