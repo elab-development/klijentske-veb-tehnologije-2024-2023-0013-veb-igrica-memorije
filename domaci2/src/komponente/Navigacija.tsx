@@ -8,6 +8,7 @@ export default function Navigacija() {
         <li><Link to="/">Početna</Link></li>
         <li><Link to="/igra">Igra</Link></li>
         <li><Link to="/rezultati">Rezultati</Link></li>
+        <li><Link to="/uputstvo">Uputstvo</Link></li>
       </ul>
     </nav>
   );
