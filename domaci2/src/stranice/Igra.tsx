@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import "../css/Igra.css";
 
 type Card = {
@@ -9,6 +10,8 @@ type Card = {
 };
 
 export default function Igra() {
+  const navigate = useNavigate(); 
+
   const [cards, setCards] = useState<Card[]>([]);
   const [firstCard, setFirstCard] = useState<Card | null>(null);
   const [secondCard, setSecondCard] = useState<Card | null>(null);
@@ -46,7 +49,7 @@ export default function Igra() {
 
   const handleChoice = (card: Card) => {
     if (lockBoard) return;
-    if (card.matched) return; // ne može da se klikne ako je već poklopljena
+    if (card.matched) return;
     if (firstCard && firstCard.uniqueId === card.uniqueId) return;
 
     if (!firstCard) {
@@ -96,11 +99,16 @@ export default function Igra() {
       tries,
     });
     localStorage.setItem("allResults", JSON.stringify(allResults));
-    window.location.href = "/results.html";
+    navigate("/rezultati");
   };
 
   return (
     <div className="Igra">
+      {/* Dugme za nazad */}
+      <button className="back-button" onClick={() => navigate("/")}>
+        &larr; Idi nazad
+      </button>
+
       <h1>Igrica Memorije</h1>
 
       <div className="score-board">

@@ -33,7 +33,7 @@ const Rezultati: React.FC = () => {
       <h1 style={{ color: "#4a3f35" }}>Rezultati partije</h1>
       <div style={{ margin: "20px 0", fontSize: "18px" }}>{content}</div>
       <div style={{ marginTop: "30px" }}>
-        <Link to="/" style={{ display: "inline-block", margin: "10px", padding: "12px 24px", fontSize: "16px", textDecoration: "none", backgroundColor: "#a8caba", color: "#2e3d49", borderRadius: "12px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)", transition: "all 0.3s ease" }}>
+        <Link to="/igra" style={{ display: "inline-block", margin: "10px", padding: "12px 24px", fontSize: "16px", textDecoration: "none", backgroundColor: "#a8caba", color: "#2e3d49", borderRadius: "12px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)", transition: "all 0.3s ease" }}>
           Nova igra
         </Link>
         <Link to="/stats" style={{ display: "inline-block", margin: "10px", padding: "12px 24px", fontSize: "16px", textDecoration: "none", backgroundColor: "#a8caba", color: "#2e3d49", borderRadius: "12px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)", transition: "all 0.3s ease" }}>
