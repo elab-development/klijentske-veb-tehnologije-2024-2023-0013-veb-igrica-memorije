@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Rezultati.css";
 
 const Rezultati: React.FC = () => {
+  const navigate = useNavigate(); 
+
   const allResults = JSON.parse(localStorage.getItem("allResults") || "[]");
   const lastResult = allResults[allResults.length - 1];
   let content;
@@ -37,6 +39,9 @@ const Rezultati: React.FC = () => {
       <div className="rezultati-content">{content}</div>
       <div className="button-container">
         <Link to="/igra">Nova igra</Link>
+        <button className="back-button" onClick={() => navigate("/")}>
+          &larr; Idi nazad
+        </button>
       </div>
     </div>
   );
