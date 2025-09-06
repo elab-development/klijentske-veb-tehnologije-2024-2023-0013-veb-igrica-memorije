@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../css/Rezultati.css";
 
 const Rezultati: React.FC = () => {
   const allResults = JSON.parse(localStorage.getItem("allResults") || "[]");
@@ -29,16 +30,13 @@ const Rezultati: React.FC = () => {
   }
 
   return (
-    <div style={{ fontFamily: "Quicksand, sans-serif", background: "#f5f1e6", color: "#333", textAlign: "center", padding: "50px" }}>
-      <h1 style={{ color: "#4a3f35" }}>Rezultati partije</h1>
-      <div style={{ margin: "20px 0", fontSize: "18px" }}>{content}</div>
-      <div style={{ marginTop: "30px" }}>
-        <Link to="/igra" style={{ display: "inline-block", margin: "10px", padding: "12px 24px", fontSize: "16px", textDecoration: "none", backgroundColor: "#a8caba", color: "#2e3d49", borderRadius: "12px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)", transition: "all 0.3s ease" }}>
-          Nova igra
-        </Link>
-        <Link to="/stats" style={{ display: "inline-block", margin: "10px", padding: "12px 24px", fontSize: "16px", textDecoration: "none", backgroundColor: "#a8caba", color: "#2e3d49", borderRadius: "12px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)", transition: "all 0.3s ease" }}>
-          Pogledaj sve statistike
-        </Link>
+    <div className="rezultati-background">
+      <div className="rezultati-header">
+        <h1>Rezultati partije</h1>
+      </div>
+      <div className="rezultati-content">{content}</div>
+      <div className="button-container">
+        <Link to="/igra">Nova igra</Link>
       </div>
     </div>
   );
