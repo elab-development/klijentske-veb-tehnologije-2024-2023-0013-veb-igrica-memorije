@@ -85,6 +85,12 @@ export default function Igra() {
     }
   }, [secondCard]);
 
+  useEffect(() => {
+  if (matchedPairs === totalPairs && totalPairs > 0) {
+    endGame();
+  }
+}, [matchedPairs, totalPairs]);
+
   const resetBoard = () => {
     setFirstCard(null);
     setSecondCard(null);
