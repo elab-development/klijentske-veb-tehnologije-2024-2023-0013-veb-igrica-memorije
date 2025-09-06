@@ -31,9 +31,8 @@ html, body, #root {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
-  padding-bottom: 300px;
-
+  padding-top: 220px;
+  padding-bottom: 150px;
   background-color: rgba(245, 241, 230, 0.7); 
 }
 
