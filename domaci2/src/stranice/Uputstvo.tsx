@@ -1,18 +1,17 @@
 import React from "react";
-import "../css/Uputstvo.css";
 import Dugme from "../komponente/Dugme";
 import Naslov from "../komponente/Naslov";
+import Kontejner from "../komponente/Kontejner";
+import "../css/Uputstvo.css";
 
 const Uputstvo: React.FC = () => {
   return (
     <div className="uputstvo-background">
       <div className="uputstvo-header">
-        <Naslov 
-          title="Kako se igra? 🎮" 
-        />
+        <Naslov title="Kako se igra? 🎮" />
       </div>
 
-      <div className="uputstvo-content">
+      <Kontejner>
         <ol>
           <li>👥 Igra se igra u dvoje.</li>
           <li>🃏 Na tabli su okrenute karte.</li>
@@ -29,11 +28,11 @@ const Uputstvo: React.FC = () => {
           <li>🔁 Igra se nastavlja dok se sve karte ne otkriju.</li>
           <li>🏆 Pobednik je onaj sa više pronađenih parova 🎉.</li>
         </ol>
-      </div>
 
-      <div style={{ marginTop: "20px" }}>
-        <Dugme text="⬅️ Nazad na početnu" to="/" />
-      </div>
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
+          <Dugme text="⬅️ Nazad na početnu" to="/" />
+        </div>
+      </Kontejner>
     </div>
   );
 };

@@ -32,41 +32,12 @@ html, body, #root {
   align-items: center;
   justify-content: center;
   padding-top: 220px;
-  padding-bottom: 150px;
+  padding-bottom: 300px;
   background-color: rgba(245, 241, 230, 0.7); 
 }
 
-/* Dugmad i slike */
 header img {
   margin-top: 30px;
   width: 250px;
   height: auto;
-}
-
-.button-container {
-  display: flex;
-  gap: 40px; 
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.button-container a {
-  margin-top: 40px;
-  padding: 18px 42px;
-  font-size: 20px;
-  background: linear-gradient(145deg, #a8caba, #91b8a3);
-  color: #2e3d49;
-  border: 2px solid #7a9e9f;
-  border-radius: 15px;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Georgia', serif;
-  text-decoration: none; 
-}
-
-.button-container a:hover {
-  background: linear-gradient(145deg, #91b8a3, #7da69a);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
 }
