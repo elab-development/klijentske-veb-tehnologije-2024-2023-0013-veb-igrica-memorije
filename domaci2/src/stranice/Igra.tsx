@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 import "../css/Igra.css";
+import Dugme from "../komponente/Dugme";
 
 type Card = {
   id: number;
@@ -86,10 +87,10 @@ export default function Igra() {
   }, [secondCard]);
 
   useEffect(() => {
-  if (matchedPairs === totalPairs && totalPairs > 0) {
-    endGame();
-  }
-}, [matchedPairs, totalPairs]);
+    if (matchedPairs === totalPairs && totalPairs > 0) {
+      endGame();
+    }
+  }, [matchedPairs, totalPairs]);
 
   const resetBoard = () => {
     setFirstCard(null);
@@ -109,12 +110,10 @@ export default function Igra() {
   };
 
   return (
-    <div className="Igra">
-      {/* Dugme za nazad */}
-      <button className="back-button" onClick={() => navigate("/")}>
-        &larr; Idi nazad
-      </button>
-
+    <div className="Igra" style={{ marginTop: "40px" }}>  
+      <div style={{ position: "absolute", top: "40px", left: "40px" }}>
+        <Dugme text="← Idi nazad" to="/" />
+      </div>
       <h1>Igrica Memorije</h1>
 
       <div className="score-board">
@@ -147,10 +146,9 @@ export default function Igra() {
           );
         })}
       </div>
-
-      <button className="end-game" onClick={endGame}>
-        Završi partiju
-      </button>
+    <div style={{ marginTop: "20px" }}>
+      <Dugme text="Završi partiju" onClick={endGame} />
+    </div>
     </div>
   );
 }

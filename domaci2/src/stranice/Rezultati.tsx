@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Dugme from "../komponente/Dugme"; 
 import "../css/Rezultati.css";
 
 const Rezultati: React.FC = () => {
@@ -38,10 +39,8 @@ const Rezultati: React.FC = () => {
       </div>
       <div className="rezultati-content">{content}</div>
       <div className="button-container">
-        <Link to="/igra">Nova igra</Link>
-        <button className="back-button" onClick={() => navigate("/")}>
-          &larr; Idi nazad
-        </button>
+        <Dugme text="Nova igra" to="/igra" />
+        <Dugme text="← Idi nazad" onClick={() => navigate("/")} />
       </div>
     </div>
   );

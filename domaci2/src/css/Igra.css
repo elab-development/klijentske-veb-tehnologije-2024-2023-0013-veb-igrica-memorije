@@ -39,32 +39,6 @@ h1 {
   margin-bottom: 30px;
 }
 
-.back-button {
-  position: absolute;
-  top: 20px;    
-  left: 20px;   
-  padding: 14px 30px;
-  font-size: 18px;
-  background: linear-gradient(145deg, #a8caba, #91b8a3);
-  color: #2e3d49;
-  border: 2px solid #7a9e9f;
-  border-radius: 15px;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Georgia', serif;
-  z-index: 1000; /* da bude iznad ostalih elemenata */
-}
-
-
-
-.back-button:hover {
-  background: linear-gradient(145deg, #91b8a3, #7da69a);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-}
-
-
 .score-board h2, .score-board p {
   margin: 0;
   font-family: 'Georgia', serif;
@@ -140,25 +114,4 @@ h1 {
 
 .memory-card.flip .back-face {
   transform: rotateY(180deg);
-}
-
-/* Dugme Završi partiju */
-.end-game {
-  margin-top: 40px;
-  padding: 14px 30px;
-  font-size: 18px;
-  background: linear-gradient(145deg, #a8caba, #91b8a3);
-  color: #2e3d49;
-  border: 2px solid #7a9e9f;
-  border-radius: 15px;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Georgia', serif;
-}
-
-.end-game:hover {
-  background: linear-gradient(145deg, #91b8a3, #7da69a);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
 }

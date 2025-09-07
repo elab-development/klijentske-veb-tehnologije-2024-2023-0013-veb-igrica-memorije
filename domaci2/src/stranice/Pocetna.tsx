@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigacija from '../komponente/Navigacija';
+import Dugme from '../komponente/Dugme';
 import '../css/Pocetna.css';
 
 export default function Pocetna() {
@@ -11,8 +12,8 @@ export default function Pocetna() {
         <h1 className="pocetna-naslov">Dobrodošli u memorijsku igricu!</h1>
         <p className="pocetna-uvod">Testirajte svoje pamćenje i zabavite se sa prijateljem!</p>
 
-        <div className="button-container">
-          <a href="/igra" className="fade-in-button">Započni igru</a>
+        <div style={{ marginTop: "20px" }}>
+          <Dugme text="Započni igru" to="/igra" />
         </div>
       </header>
     </div>
