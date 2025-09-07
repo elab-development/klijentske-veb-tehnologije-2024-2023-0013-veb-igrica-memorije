@@ -1,12 +1,15 @@
 import React from "react";
 import "../css/Uputstvo.css";
 import Dugme from "../komponente/Dugme";
+import Naslov from "../komponente/Naslov";
 
 const Uputstvo: React.FC = () => {
   return (
     <div className="uputstvo-background">
       <div className="uputstvo-header">
-        <h1>Kako se igra? 🎮</h1>
+        <Naslov 
+          title="Kako se igra? 🎮" 
+        />
       </div>
 
       <div className="uputstvo-content">

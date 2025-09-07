@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigacija from '../komponente/Navigacija';
 import Dugme from '../komponente/Dugme';
+import Naslov from '../komponente/Naslov';
 import '../css/Pocetna.css';
 
 export default function Pocetna() {
@@ -9,8 +10,11 @@ export default function Pocetna() {
       <Navigacija />
       <header className="pocetna-header">
         <img src="/img/logo.igrica.png" alt="Logo igre" className="pocetna-logo" />
-        <h1 className="pocetna-naslov">Dobrodošli u memorijsku igricu!</h1>
-        <p className="pocetna-uvod">Testirajte svoje pamćenje i zabavite se sa prijateljem!</p>
+
+        <Naslov 
+          title="Dobrodošli u memorijsku igricu!" 
+          subtitle="Testirajte svoje pamćenje i zabavite se sa prijateljem!" 
+        />
 
         <div style={{ marginTop: "20px" }}>
           <Dugme text="Započni igru" to="/igra" />

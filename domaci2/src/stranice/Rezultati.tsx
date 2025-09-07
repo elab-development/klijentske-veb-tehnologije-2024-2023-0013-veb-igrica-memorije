@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Dugme from "../komponente/Dugme"; 
 import "../css/Rezultati.css";
+import Naslov from '../komponente/Naslov';
 
 const Rezultati: React.FC = () => {
   const navigate = useNavigate(); 
@@ -34,9 +35,9 @@ const Rezultati: React.FC = () => {
 
   return (
     <div className="rezultati-background">
-      <div className="rezultati-header">
-        <h1>Rezultati partije</h1>
-      </div>
+        <Naslov 
+          title="Rezultati poslednje partije!" 
+        />
       <div className="rezultati-content">{content}</div>
       <div className="button-container">
         <Dugme text="Nova igra" to="/igra" />

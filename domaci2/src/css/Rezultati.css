@@ -23,12 +23,6 @@ html, body, #root {
   font-family: 'Quicksand', sans-serif;
 }
 
-.rezultati-header h1 {
-  font-size: 48px;
-  color: #4a3f35;
-  animation: pulse 2s infinite;
-}
-
 .rezultati-content {
   margin: 20px 0;
   font-size: 18px;
