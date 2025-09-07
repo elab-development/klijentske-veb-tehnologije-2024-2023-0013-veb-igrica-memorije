@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom"; 
 import "../css/Igra.css";
 import Dugme from "../komponente/Dugme";
+import { Game } from "../klase/Igra"; 
 
 type Card = {
   id: number;
   image: string;
-  uniqueId: number; // jedinstveni ID za svaku instancu
+  uniqueId: number;
   matched?: boolean;
 };
 
 export default function Igra() {
-  const navigate = useNavigate(); 
-
+  const gameRef = useRef<Game>(new Game()); 
+  const game = gameRef.current;
+  const navigate = useNavigate();
   const [cards, setCards] = useState<Card[]>([]);
   const [firstCard, setFirstCard] = useState<Card | null>(null);
   const [secondCard, setSecondCard] = useState<Card | null>(null);
   const [lockBoard, setLockBoard] = useState(false);
-
-  const [playerTurn, setPlayerTurn] = useState(1);
-  const [player1Score, setPlayer1Score] = useState(0);
-  const [player2Score, setPlayer2Score] = useState(0);
-
-  const [tries, setTries] = useState(0);
+  const [playerTurn, setPlayerTurn] = useState<1 | 2>(1);
   const [matchedPairs, setMatchedPairs] = useState(0);
   const [totalPairs, setTotalPairs] = useState(0);
 
@@ -49,15 +46,14 @@ export default function Igra() {
   const shuffleArray = (array: Card[]) => array.sort(() => 0.5 - Math.random());
 
   const handleChoice = (card: Card) => {
-    if (lockBoard) return;
-    if (card.matched) return;
+    if (lockBoard || card.matched) return;
     if (firstCard && firstCard.uniqueId === card.uniqueId) return;
 
     if (!firstCard) {
       setFirstCard(card);
     } else if (!secondCard) {
       setSecondCard(card);
-      setTries(t => t + 1);
+      game.incrementTries(); 
       setLockBoard(true);
     }
   };
@@ -67,14 +63,13 @@ export default function Igra() {
       if (firstCard.id === secondCard.id) {
         setCards(prev =>
           prev.map(c =>
-            c.id === firstCard.id && (c.uniqueId === firstCard.uniqueId || c.uniqueId === secondCard.uniqueId)
+            c.id === firstCard.id &&
+            (c.uniqueId === firstCard.uniqueId || c.uniqueId === secondCard.uniqueId)
               ? { ...c, matched: true }
               : c
           )
         );
-
-        if (playerTurn === 1) setPlayer1Score(s => s + 1);
-        else setPlayer2Score(s => s + 1);
+        game.addPoint(playerTurn); 
         setMatchedPairs(p => p + 1);
         resetBoard();
       } else {
@@ -100,11 +95,7 @@ export default function Igra() {
 
   const endGame = () => {
     const allResults = JSON.parse(localStorage.getItem("allResults") || "[]");
-    allResults.push({
-      player1: player1Score,
-      player2: player2Score,
-      tries,
-    });
+    allResults.push(game.getResult()); 
     localStorage.setItem("allResults", JSON.stringify(allResults));
     navigate("/rezultati");
   };
@@ -118,8 +109,8 @@ export default function Igra() {
 
       <div className="score-board">
         <h2>Na potezu: Igrač {playerTurn}</h2>
-        <p>Igrač 1: {player1Score}</p>
-        <p>Igrač 2: {player2Score}</p>
+        <p>Igrač 1: {game.getResult().player1}</p>
+        <p>Igrač 2: {game.getResult().player2}</p>
       </div>
 
       <div className="game-board">
@@ -146,9 +137,9 @@ export default function Igra() {
           );
         })}
       </div>
-    <div style={{ marginTop: "20px" }}>
-      <Dugme text="Završi partiju" onClick={endGame} />
-    </div>
+      <div style={{ marginTop: "20px" }}>
+        <Dugme text="Završi partiju" onClick={endGame} />
+      </div>
     </div>
   );
 }
