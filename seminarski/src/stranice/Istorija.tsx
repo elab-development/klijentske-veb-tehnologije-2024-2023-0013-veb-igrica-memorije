@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from "react";
-import { ResultsStore, WinnerFilter, Result } from "../models/ResultsStore"; 
+import { ResultsStore, WinnerFilter, Result } from "../klase/ResultsStore"; 
 import Paginacija from "../komponente/Paginacija";
 import Dugme from "../komponente/Dugme";
+import "../css/Istorija.css";
 
 const store = new ResultsStore();
 
@@ -25,31 +26,31 @@ const Istorija: React.FC = () => {
       <h1>📜 Istorija igara</h1>
 
         {/* Filteri */}
-      <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
-        <label>
-          Pobednik:
-          <select value={winner} onChange={e => setWinner(e.target.value as WinnerFilter)}>
+        <div className="istorija-filters">
+        <label> 
+            Pobednik:
+            <select value={winner} onChange={e => setWinner(e.target.value as WinnerFilter)}>
             <option value="svi">Svi</option>
             <option value="igrac1">Igrač 1</option>
             <option value="igrac2">Igrač 2</option>
             <option value="nereseno">Nerešeno</option>
-          </select>
+            </select>
         </label>
         <label>
-          Min pokušaja:
-          <input 
+            Min pokušaja:
+            <input 
             type="number" 
             value={minTries ?? ""} 
             onChange={e => setMinTries(e.target.value ? Number(e.target.value) : undefined)} 
-          />
+            />
         </label>
         <label>
-          Max pokušaja:
-          <input 
+            Max pokušaja:
+            <input 
             type="number" 
             value={maxTries ?? ""} 
             onChange={e => setMaxTries(e.target.value ? Number(e.target.value) : undefined)} 
-          />
+            />
         </label>
         <Dugme 
           text="Resetuj filtere" 
@@ -59,7 +60,7 @@ const Istorija: React.FC = () => {
             setMaxTries(undefined); 
           }} 
         />
-      </div>
+        </div>
 
       {/* Tabela rezultata */}
       <table border={1} cellPadding={8} style={{ width: "100%", borderCollapse: "collapse" }}>
