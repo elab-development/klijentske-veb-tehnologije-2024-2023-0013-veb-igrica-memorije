@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# Igrica Memorije – Veb Aplikacija
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ova veb aplikacija je interaktivna igra memorije namenjena za dva igrača. Omogućava korisnicima da se takmiče, prate svoje rezultate, pregledaju istoriju igara sa naprednim filterima, i po potrebi resetuju sve podatke.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Pokretanje Projekta
 
-### `npm start`
+Da biste pokrenuli aplikaciju na svojoj mašini, pratite sledeće korake:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1.  **Klonirajte repozitorijum:**
+    ```bash
+    git clone [https://github.com/elab-development/klijentske-veb-tehnologije-2024-2023-0013-veb-igrica-memorije](https://github.com/elab-development/klijentske-veb-tehnologije-2024-2023-0013-veb-igrica-memorije)
+    ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2.  **Uđite u folder projekta i otvorite ga u VS Code:**
+    ```bash
+    cd seminarski
+    ```
 
-### `npm test`
+3.  **Instalirajte zavisnosti:**
+    U terminalu unutar VS Code-a pokrenite komandu:
+    ```bash
+    npm install
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4.  **Pokrenite razvojni server:**
+    ```bash
+    npm start
+    ```
+    Aplikacija će se automatski otvoriti u vašem pregledaču na adresi **`http://localhost:3000`**.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tehnologije
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **React** – za izgradnju korisničkog interfejsa.
+* **TypeScript** – za tipizaciju i bolju kontrolu podataka.
+* **React Router** – za navigaciju između stranica.
+* **CSS** – za stilizaciju.
+* **LocalStorage** – za trajno čuvanje rezultata igara u pregledaču.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Ključne Funkcionalnosti
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* **Igra Memorije:** Igra za dva igrača sa praćenjem poena, broja pokušaja i čuvanjem rezultata.
+* **Istorija Rezultata:**
+    * Prikaz svih završenih igara.
+    * Napredni **filteri** po pobedniku, minimalnom i maksimalnom broju pokušaja.
+    * **Paginacija** sa prikazom više rezultata po stranici.
+    * Opcija za brisanje svih rezultata.
+* **Navigacija:** Jednostavna navigacija kroz stranice: Početna, Igra, Poslednji rezultat, Istorija rezultata i Uputstvo.
+* **Reusable komponente:** Projekat koristi komponente poput `Dugme`, `Paginacija` i `Navigacija` za efikasnost i održivost koda.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
