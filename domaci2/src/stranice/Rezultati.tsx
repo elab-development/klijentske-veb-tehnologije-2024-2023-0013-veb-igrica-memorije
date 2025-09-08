@@ -37,6 +37,9 @@ const Rezultati: React.FC = () => {
 
 return (
   <div className="rezultati-background">
+    <div style={{ position: "absolute", top: "40px", left: "40px" }}>
+        <Dugme text="← Idi nazad" to="/" />
+    </div>
     <Naslov title="Rezultati poslednje partije!" />
 
     <Kontejner>
@@ -44,7 +47,6 @@ return (
 
       <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "20px" }}>
         <Dugme text="Nova igra" to="/igra" />
-        <Dugme text="← Idi nazad" onClick={() => navigate("/")} />
       </div>
     </Kontejner>
   </div>
