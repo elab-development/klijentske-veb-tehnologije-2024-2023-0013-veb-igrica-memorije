@@ -6,7 +6,12 @@ import '../css/Pocetna.css';
 
 export default function Pocetna() {
   return (
-    <div className="pocetna-background">
+    <div
+      className="pocetna-background"
+      style={{
+        background: `url(${process.env.PUBLIC_URL + "/img/pozadina.png"}) center center / cover no-repeat`
+      }}
+    >
       <Navigacija />
       <header className="pocetna-header">
         <img src="/img/logo.igrica.png" alt="Logo igre" className="pocetna-logo" />
