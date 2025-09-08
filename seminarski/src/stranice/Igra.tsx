@@ -101,6 +101,8 @@ export default function Igra() {
   };
 
   return (
+        <div className="background">
+
     <div className="Igra" style={{ marginTop: "40px" }}>  
       <div style={{ position: "absolute", top: "40px", left: "40px" }}>
         <Dugme text="← Idi nazad" to="/" />
@@ -137,9 +139,10 @@ export default function Igra() {
           );
         })}
       </div>
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "20px", marginBottom:"40px"}}>
         <Dugme text="Završi partiju" onClick={endGame} />
       </div>
+    </div>
     </div>
   );
 }
