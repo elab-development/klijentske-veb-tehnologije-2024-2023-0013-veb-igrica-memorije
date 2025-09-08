@@ -7,6 +7,9 @@ import "../css/Uputstvo.css";
 const Uputstvo: React.FC = () => {
   return (
     <div className="uputstvo-background">
+      <div style={{ position: "absolute", top: "40px", left: "40px" }}>
+        <Dugme text="← Idi nazad" to="/" />
+      </div>
       <div className="uputstvo-header">
         <Naslov title="Kako se igra? 🎮" />
       </div>
@@ -29,8 +32,8 @@ const Uputstvo: React.FC = () => {
           <li>🏆 Pobednik je onaj sa više pronađenih parova 🎉.</li>
         </ol>
 
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <Dugme text="⬅️ Nazad na početnu" to="/" />
+        <div style={{ marginTop: "20px",textAlign:"center" }}>
+          <Dugme text="Započni igru" to="/igra" />
         </div>
       </Kontejner>
     </div>
