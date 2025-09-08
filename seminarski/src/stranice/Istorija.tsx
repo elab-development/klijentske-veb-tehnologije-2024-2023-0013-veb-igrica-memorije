@@ -24,6 +24,9 @@ const Istorija: React.FC = () => {
   return (
     <div className="rezultati-background">
       <div className="rezultati-content">
+      <div style={{ position: "absolute", top: "40px", left: "40px" }}>
+        <Dugme text="← Idi nazad" to="/" />
+      </div>
         <h1>📜 Istorija igara</h1>
 
         {/* Filteri */}
